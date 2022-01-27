@@ -15,6 +15,7 @@ public class Subject {
     private Integer age;
     private Orientation sex;
     private String hospitalId;
+    private Integer groupId;
 
     public Long getId() {
         return id;
@@ -62,5 +63,13 @@ public class Subject {
 
     public void setHospitalId(String hospitalId) {
         this.hospitalId = hospitalId;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
     }
 }
