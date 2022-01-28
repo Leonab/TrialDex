@@ -1,19 +1,35 @@
 package com.trialdex.dex.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "trial", schema = "public")
 public class Trial {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private Long ownerId;
     private String trialName;
     private String description;
     private Integer noOfGroups;
+    @ManyToMany
+    @JoinTable(
+            name = "trialsubjectmap",
+            joinColumns = @JoinColumn(
+                    name = "trialId",
+                    referencedColumnName = "id",
+                    nullable = false
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "subjectId",
+                    referencedColumnName = "id",
+                    nullable = false
+            )
+    )
+    private Set<Subject> subjects;
 
     public Long getId() {
         return id;
@@ -53,5 +69,13 @@ public class Trial {
 
     public void setNoOfGroups(Integer noOfGroups) {
         this.noOfGroups = noOfGroups;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
 }

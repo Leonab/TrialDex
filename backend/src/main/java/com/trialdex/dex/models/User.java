@@ -1,30 +1,26 @@
 package com.trialdex.dex.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "public")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private LocalDateTime createdate;
     private String firstname;
     private String lastname;
     private String email;
+    @OneToMany
+    @JoinColumn(name = "ownerId")
+    private Set<Trial> trials;
 
     public User() {
-    }
-
-    public User(Long id, String firstname, String lastname, LocalDateTime createdate, String email) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.createdate = createdate;
-        this.email = email;
     }
 
     public Long getId() {
@@ -65,5 +61,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Trial> getTrials() {
+        return trials;
+    }
+
+    public void setTrials(Set<Trial> trials) {
+        this.trials = trials;
     }
 }

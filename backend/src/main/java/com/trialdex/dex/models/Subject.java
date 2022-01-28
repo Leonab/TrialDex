@@ -1,14 +1,17 @@
 package com.trialdex.dex.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "subject", schema = "public")
 public class Subject {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String firstname;
     private String lastname;
@@ -16,6 +19,9 @@ public class Subject {
     private Orientation sex;
     private String hospitalId;
     private Integer groupId;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "subjects")
+    private Set<Trial> belongsTo;
 
     public Long getId() {
         return id;
@@ -71,5 +77,13 @@ public class Subject {
 
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;
+    }
+
+    public Set<Trial> getBelongsTo() {
+        return belongsTo;
+    }
+
+    public void setBelongsTo(Set<Trial> belongsTo) {
+        this.belongsTo = belongsTo;
     }
 }

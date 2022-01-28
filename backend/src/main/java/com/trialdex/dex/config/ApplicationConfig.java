@@ -27,7 +27,7 @@ class ApplicationConfig {
     public DataSource dataSource() {
 
         PGSimpleDataSource datasource = new PGSimpleDataSource();
-        datasource.setServerNames(new String[] {"localhost"});
+        datasource.setServerNames(new String[]{"localhost"});
         datasource.setDatabaseName("testdexdb");
         datasource.setUser("postgres");
         datasource.setPassword(pword);
@@ -38,7 +38,7 @@ class ApplicationConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(false);
+        vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setDatabase(Database.POSTGRESQL);
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
