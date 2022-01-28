@@ -20,8 +20,18 @@ public class TrialController {
         this.trialService = trialService;
     }
 
+    @GetMapping("/trial/{id}")
+    public Trial getTrial(@PathVariable Long id) {
+        Trial trial = trialService.getTrialById(id);
+        if (Objects.nonNull(trial)) {
+            return trial;
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trial with id: " + id + " not found");
+    }
+
     @GetMapping("/trial")
-    public List<Trial> findTrialsByOwner(@RequestParam("ownerId") Long id) {
+    public List<Trial> getTrialsByOwner(@RequestParam("ownerId") Long id) {
         return trialService.getTrialsByOwnerId(id);
     }
 

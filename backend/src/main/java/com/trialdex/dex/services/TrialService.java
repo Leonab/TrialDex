@@ -28,6 +28,11 @@ public class TrialService implements ITrialService {
     }
 
     @Override
+    public Trial getTrialById(Long id) {
+        return trialRepository.findTrialById(id);
+    }
+
+    @Override
     public Trial createTrial(Trial trial) {
         Trial newTrial = trialRepository.save(trial);
         if (Objects.isNull(newTrial.getOwnerId())) {

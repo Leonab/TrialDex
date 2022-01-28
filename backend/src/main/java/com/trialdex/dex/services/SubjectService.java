@@ -26,6 +26,6 @@ public class SubjectService implements ISubjectService {
 
     @Override
     public Subject findById(Long id) {
-        return subjectRepository.getById(id);
+        return subjectRepository.findSubjectById(id);
     }
 }

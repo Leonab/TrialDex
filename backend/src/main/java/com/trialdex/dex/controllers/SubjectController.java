@@ -3,10 +3,11 @@ package com.trialdex.dex.controllers;
 import com.trialdex.dex.models.Subject;
 import com.trialdex.dex.services.ISubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Objects;
 
 @RestController
 public class SubjectController {
@@ -16,6 +17,16 @@ public class SubjectController {
     @Autowired
     public SubjectController(ISubjectService subjectService) {
         this.subjectService = subjectService;
+    }
+
+    @GetMapping("/subject/{id}")
+    public Subject getSubject(@PathVariable Long id) {
+        Subject subject = subjectService.findById(id);
+        if (Objects.nonNull(subject)) {
+            return subject;
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Subject with id: " + id + " not found");
     }
 
     @PostMapping("/subject")
