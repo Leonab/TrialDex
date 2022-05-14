@@ -1,5 +1,6 @@
+import { Button, Divider, ListItem, ListItemText } from '@mui/material';
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import classes from './TrialPreview.module.css'
 
 const TrialPreview = (props) => {
     const trial = props.trial;
@@ -8,19 +9,21 @@ const TrialPreview = (props) => {
     };
 
     return ( 
-        <li key={trial.id}>
-            <div className={classes.trialPreview}>
-                <h3>{trial.name}</h3>
-                <div className={classes.description}>{trial.description}</div>
-                <div className={classes.date}>{trial.createDate}</div>
-                <div className={classes.date}>{trial.updateDate}</div>
-                <div>
-                    <Link to={`/trials/${trial.id}`}>
-                    <button className='button' onClick={revealGroupHandler}>Open</button>
-                    </Link>
-                </div>
-            </div>
-        </li>
+        <Fragment>
+            <ListItem
+                secondaryAction={
+                    <Button to={`${trial.id}`} component={Link} variant="contained" edge='end'>
+                        Open
+                    </Button>
+                }
+            >
+                <ListItemText
+                    primary={trial.name}
+                    secondary={trial.description}
+                />
+            </ListItem>
+            <Divider />
+        </Fragment>
     );
 };
 

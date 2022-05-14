@@ -1,0 +1,26 @@
+[
+    {
+        "id": "firstname",
+        "label": "First Name"
+    },
+    {
+        "id": "lastname",
+        "label": "Last Name"
+    },
+    {
+        "id": "age",
+        "label": "Age"
+    },
+    {
+        "id": "sex",
+        "label": "Orientation"
+    },
+    {
+        "id": "hospitalId",
+        "label": "Hospital Id"
+    },
+    {
+        "id": "groupId",
+        "label": "Group"
+    }
+]

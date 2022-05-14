@@ -1,19 +1,25 @@
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
 
-import classes from './Header.module.css';
-import LoginButton from "./LoginButton";
-
-const Header = props => {
+const Header = (props) => {
     return (
-    <div>
-        <header className={classes.header}>
-            <Link to='/'>
-                <h1>TrialDex</h1>
-            </Link>
-            <LoginButton />
-        </header>
-    </div>
+        <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              TrialDex
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
     );
 };
 
