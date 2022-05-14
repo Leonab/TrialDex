@@ -1,5 +1,4 @@
-import Card from '../UI/Card';
-import classes from './OngoingTrials.module.css';
+import { Box, Card, CardContent, Paper, Typography } from '@mui/material';
 import TrialPreview from './TrialPreview'
 
 const OngoingTrials = (props) => {
@@ -24,14 +23,13 @@ const OngoingTrials = (props) => {
     const trialList = trials.map((t) => <TrialPreview key={t.id} trial={t} />);
 
     return (
-        <section className={classes.trials}>
-            <h1>Ongoing Trials - #</h1>
-            <Card>
-            <ul>
-                {trialList}
-            </ul>
-            </Card>
-        </section>
+        <Box sx={{ flexGrow: 1 }}>
+            <Typography variant='h3'>Ongoing Trials - #</Typography>
+            <Paper >
+                    {trialList}
+
+            </Paper>
+        </Box>
     );
 };
 

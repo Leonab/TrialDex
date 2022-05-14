@@ -1,5 +1,7 @@
-import { ErrorMessage, Field, Form, Formik, useFormik, yupToFormErrors } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import * as Yup from 'yup';
+import Input from "../UI/Input";
+import classes from './NewTrialForm.module.css';
 
 const NewTrialForm = (props) => {
     return (
@@ -7,34 +9,39 @@ const NewTrialForm = (props) => {
         initialValues={{
             name: '',
             description: '',
-            numberOfGroups: 0
+            numberOfGroups: ''
         }}
         validationSchema={Yup.object({
             name: Yup.string()
                 .required('Required'),
-            numberOfGroups: Yup.string()
+            numberOfGroups: Yup.number()
                 .min(1, 'Must be at least 1')
                 .max(4, 'Must be less than or equal to 4')
                 .required('Required')
         })}
-        onSubmit={(values, {setSubmitting}) => {
+        onSubmit={(values, { setSubmitting }) => {
             console.log(values);
         }}
     >
-        <Form>
-            <label htmlFor="name">Name: </label>
-            <Field name="name" type="text" />
-            <ErrorMessage name="name" />
+        <Form className={classes.form}>
+                <Input name="name" type="text" label="Name: " />
 
-            <label htmlFor="description">Description: </label>
-            <Field name="description" as="textarea" />
-            <ErrorMessage name="description" />
+            <div className={classes.control}>
+                <label htmlFor="description">Description: </label>
+                <Field name="description" as="textarea" />
+                <ErrorMessage name="description" />
+            </div>
 
-            <label htmlFor="numberOfGroups">Number of groups to distribute subjects: </label>
-            <Field name="numberOfGroups" type="number" />
-            <ErrorMessage name="numberOfGroups" />
+            <div className={classes.control}>
+                <label htmlFor="numberOfGroups">Number of groups to distribute subjects: </label>
+                <Field name="numberOfGroups" type="number" />
+                <ErrorMessage name="numberOfGroups" component="div" className={classes.invalid} />
+            </div>
 
-            <button type="submit">Submit</button>
+            <div className={classes.actions}>
+                <button type='button' onClick={props.onCancel}>Cancel</button>
+                <button type="submit">Submit</button>
+            </div>
         </Form>
     </Formik>
     );

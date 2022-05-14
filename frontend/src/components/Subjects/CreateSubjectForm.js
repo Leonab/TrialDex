@@ -1,6 +1,4 @@
 import { useRef, useState } from 'react';
-// import Input from '../UI/Input';
-import classes from './CreateSubjectForm.module.css';
 
 const CreateSubjectForm = props => {
     const firtNameRef = useRef();
