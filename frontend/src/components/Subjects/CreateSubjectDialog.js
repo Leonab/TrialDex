@@ -1,36 +1,35 @@
-import { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button} from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button, Box } from "@mui/material";
+import { useRef } from "react";
+import CreateSubjectForm from "./CreateSubjectForm";
 
 const CreateSubjectDialog = (props) => {
-    const diaglogOpen = props.open;
+	const diaglogOpen = props.open;
+	const subjectFormRef = useRef();
 
-    const closeHandler = () => {
-        props.closeHandler();
+	const closeHandler = () => {
+		props.closeHandler();
+	};
+
+    const saveHandler = () => {
+		subjectFormRef.current.onClickSave();
     };
 
-    return (
-        <Dialog open={diaglogOpen} onClose={closeHandler}>
-            <DialogTitle>Create a new Subject</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Please fill in all the required fields - 
-                </DialogContentText>
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Full name"
-                    type="name"
-                    fullWidth
-                    variant="standard"
-                />
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={closeHandler}>Cancel</Button>
-                <Button onClick={closeHandler}>Save</Button>
-            </DialogActions>
-        </Dialog>
-    );
+
+	return (
+		<Dialog open={diaglogOpen} onClose={closeHandler}>
+			<DialogTitle>Create New Subject for Trial</DialogTitle>
+			<DialogContent>
+				<DialogContentText>Please fill in all the required fields -</DialogContentText>
+                <Box padding={2}>
+                    <CreateSubjectForm ref={subjectFormRef} />
+                </Box>
+			</DialogContent>
+			<DialogActions>
+				<Button onClick={closeHandler}>Cancel</Button>
+				<Button variant="contained" onClick={saveHandler}>Save</Button>
+			</DialogActions>
+		</Dialog>
+	);
 };
 
 export default CreateSubjectDialog;

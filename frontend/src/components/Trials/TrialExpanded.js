@@ -1,17 +1,15 @@
-import { Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 const TrialExpanded = (props) => {
     const trial = props.trial;
 
     return (
-        <div>
-            <Typography variant="h2">Trial - {trial.id}</Typography>
-            <Typography variant="h4">{trial.name}</Typography>
+            <Box padding={2}>
+                <Typography variant="h4">{trial.name} - {trial.id}</Typography>
 
-            <Typography variant="p">Description: {trial.description}</Typography>
-            <Typography variant="subtitle2" mb={2}>No of Groups: {trial.noOfGroups}</Typography>
-
-        </div>
+                <Typography variant="overline" display="block" gutterBottom>Description: {trial.description}</Typography>
+                <Typography variant="subtitle2">No of Groups: {trial.noOfGroups}</Typography>
+            </Box>
     );
 };
 

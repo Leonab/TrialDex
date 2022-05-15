@@ -8,8 +8,8 @@
         "label": "Last Name"
     },
     {
-        "id": "age",
-        "label": "Age"
+        "id": "dob",
+        "label": "Date of Birth"
     },
     {
         "id": "sex",
@@ -20,7 +20,7 @@
         "label": "Hospital Id"
     },
     {
-        "id": "groupId",
-        "label": "Group"
+        "id": "details",
+        "label": "Details"
     }
 ]
