@@ -23,7 +23,7 @@ const TrialDetails = (props) => {
 
     const trial = {
         id: params.id,
-        name: 'Name hulula ' + params.id,
+        name: 'Name hulula',
         description: 'Best desc ever',
         noOfGroups: 3
     };
