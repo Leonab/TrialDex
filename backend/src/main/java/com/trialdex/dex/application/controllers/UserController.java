@@ -1,23 +1,26 @@
-package com.trialdex.dex.controllers;
+package com.trialdex.dex.application.controllers;
 
 import com.trialdex.dex.models.User;
 import com.trialdex.dex.services.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
     private final IUserService userService;
-
-    @Autowired
-    public UserController(IUserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping("/user")
     public Long createUser(@RequestBody User user) {

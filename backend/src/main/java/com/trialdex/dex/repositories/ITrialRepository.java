@@ -10,4 +10,6 @@ import java.util.List;
 public interface ITrialRepository extends JpaRepository<Trial, Long> {
 
     List<Trial> findTrialsByOwnerId(Long ownerId);
+
+    Trial findTrialById(Long id);
 }

@@ -4,6 +4,7 @@ import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,6 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories("com.trialdex.dex.repositories")
+@EnableJpaAuditing
 @EnableTransactionManagement
 class ApplicationConfig {
 

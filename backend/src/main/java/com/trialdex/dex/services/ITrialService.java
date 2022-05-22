@@ -9,4 +9,6 @@ public interface ITrialService {
     Trial createTrial(Trial trial);
 
     List<Trial> getTrialsByOwnerId(Long id);
+
+    Trial getTrialById(Long id);
 }
