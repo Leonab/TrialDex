@@ -1,4 +1,4 @@
-package com.trialdex.dex.controllers;
+package com.trialdex.dex.application.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

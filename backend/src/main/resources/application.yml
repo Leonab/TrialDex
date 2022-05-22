@@ -1,0 +1,21 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org:
+      springframework:
+        web:
+          client:
+            RestTemplate: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.boot.autoconfigure: DEBUG
+
+server:
+  error:
+    include-message: ALWAYS
+
+jwt:
+  gen:
+    issuer: trialDex
+    duration-valid: 15

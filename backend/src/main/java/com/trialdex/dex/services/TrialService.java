@@ -34,10 +34,10 @@ public class TrialService implements ITrialService {
 
     @Override
     public Trial createTrial(Trial trial) {
-        Trial newTrial = trialRepository.save(trial);
-        if (Objects.isNull(newTrial.getOwnerId())) {
+        if (Objects.isNull(trial.getOwnerId())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Owner id cannot be null");
         }
+        Trial newTrial = trialRepository.save(trial);
         trialManagement.addTrialToUser(newTrial, newTrial.getOwnerId());
         return newTrial;
     }
