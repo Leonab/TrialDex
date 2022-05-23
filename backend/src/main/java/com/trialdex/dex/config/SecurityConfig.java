@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests(a -> a
-                        .antMatchers("/", "/error", "/health", "/login").permitAll()
+                        .antMatchers("/", "/error", "/health", "/login", "/static/**", "/favicon.ico", "/manifest.json").permitAll()
                         .anyRequest().authenticated()
                 )
                 .logout(l -> l
