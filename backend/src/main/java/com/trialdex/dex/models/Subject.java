@@ -26,8 +26,8 @@ public class Subject {
     private String firstname;
     private String lastname;
     private String email;
-    private Integer age;
-    private Orientation sex;
+    private LocalDateTime dob;
+    private Orientation orientation;
     private String hospitalId;
     private Integer groupId;
     @CreationTimestamp

@@ -3,11 +3,8 @@ package com.trialdex.dex.services;
 import com.trialdex.dex.models.Subject;
 import com.trialdex.dex.models.Trial;
 import com.trialdex.dex.models.TrialSubjectMap;
-import com.trialdex.dex.models.User;
-import com.trialdex.dex.repositories.ISubjectRepository;
 import com.trialdex.dex.repositories.ITrialRepository;
 import com.trialdex.dex.repositories.ITrialSubjectMapRepository;
-import com.trialdex.dex.repositories.IUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,17 +15,7 @@ import javax.transaction.Transactional;
 public class TrialManagementImpl implements ITrialManagement {
 
     private final ITrialRepository trialRepository;
-    private final ISubjectRepository subjectRepository;
-    private final IUserRepository userRepository;
     private final ITrialSubjectMapRepository trialSubjectMapRepository;
-
-    @Override
-    @Transactional
-    public void addTrialToUser(Trial trial, Long userId) {
-        User user = userRepository.getById(userId);
-        user.getTrials().add(trial);
-        userRepository.save(user);
-    }
 
     @Override
     @Transactional

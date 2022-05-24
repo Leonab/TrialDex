@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,9 +38,16 @@ public class SubjectController {
     }
 
     @PostMapping("/subject")
-    public SubjectDto createSubject(@RequestBody SubjectDto subject, @RequestParam("trialId") Long id) {
+    public SubjectDto createSubject(@RequestBody SubjectDto subject, @RequestParam("trialId") Long trialId) {
         Subject requestSubject = mapper.subjectDtoToSubject(subject);
-        Subject newSubject = subjectService.createSubject(requestSubject, id);
+        Subject newSubject = subjectService.createSubject(requestSubject, trialId);
         return mapper.subjectToSubjectDto(newSubject);
+    }
+
+    @GetMapping("/subject")
+    public List<SubjectDto> getSubjectsByTrial(@RequestParam("trialId") Long trialId) {
+        return subjectService.findSubjectsByTrialId(trialId).stream()
+                .map(mapper::subjectToSubjectDto)
+                .collect(Collectors.toList());
     }
 }
