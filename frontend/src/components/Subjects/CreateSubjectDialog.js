@@ -12,6 +12,7 @@ const CreateSubjectDialog = (props) => {
 
     const saveHandler = () => {
 		subjectFormRef.current.onClickSave();
+		props.closeHandler();
     };
 
 
@@ -21,7 +22,7 @@ const CreateSubjectDialog = (props) => {
 			<DialogContent>
 				<DialogContentText>Please fill in all the required fields -</DialogContentText>
                 <Box padding={2}>
-                    <CreateSubjectForm ref={subjectFormRef} />
+                    <CreateSubjectForm ref={subjectFormRef} id={props.id} />
                 </Box>
 			</DialogContent>
 			<DialogActions>
