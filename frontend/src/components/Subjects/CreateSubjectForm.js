@@ -28,7 +28,7 @@ const CreateSubjectForm = forwardRef((props, ref) => {
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			postData(`http://localhost:8080/api/v1/subject?trialId=${props.id}`, values);
+			postData(`/api/v1/subject?trialId=${props.id}`, values);
 		}
 	});
 

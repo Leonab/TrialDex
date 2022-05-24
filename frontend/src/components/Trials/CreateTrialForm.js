@@ -25,7 +25,7 @@ const CreateTrialForm = forwardRef((props, ref) => {
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
 			values = {...values, 'ownerId': 1};
-			postData("http://localhost:8080/api/v1/trial", values);
+			postData("/api/v1/trial", values);
 		},
 	});
 
