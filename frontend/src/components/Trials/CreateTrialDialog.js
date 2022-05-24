@@ -4,14 +4,15 @@ import CreateTrialForm from "./CreateTrialForm";
 
 const CreateTrialDialog = (props) => {
 	const diaglogOpen = props.open;
-	const subjectFormRef = useRef();
+	const trialFormRef = useRef();
 
 	const closeHandler = () => {
 		props.closeHandler();
 	};
 
 	const saveHandler = () => {
-		subjectFormRef.current.onClickSave();
+		trialFormRef.current.onClickSave();
+		props.closeHandler();
 	};
 
 	return (
@@ -20,7 +21,7 @@ const CreateTrialDialog = (props) => {
 			<DialogContent>
 				<DialogContentText>Please fill in all the required fields -</DialogContentText>
 				<Box padding={2}>
-					<CreateTrialForm ref={subjectFormRef} />
+					<CreateTrialForm ref={trialFormRef} />
 				</Box>
 			</DialogContent>
 			<DialogActions>

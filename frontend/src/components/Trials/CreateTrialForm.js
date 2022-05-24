@@ -2,6 +2,7 @@ import { Box, Slider, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { forwardRef, useImperativeHandle } from "react";
 import * as yup from "yup";
+import postData from "../../services/http-service";
 
 const CreateTrialForm = forwardRef((props, ref) => {
 	const validationSchema = yup.object({
@@ -18,12 +19,13 @@ const CreateTrialForm = forwardRef((props, ref) => {
 		initialValues: {
 			name: "",
 			description: "",
-			subjectcount: 20,
-			groupcount: 2,
+			subjectCount: 20,
+			groupCount: 2,
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			console.log(values);
+			values = {...values, 'ownerId': 1};
+			postData("http://localhost:8080/api/v1/trial", values);
 		},
 	});
 
@@ -63,9 +65,9 @@ const CreateTrialForm = forwardRef((props, ref) => {
 					No. of Subjects
 				</Typography>
 				<Slider
-					id="subjectcount"
-					name="subjectcount"
-					value={formik.values.subjectcount}
+					id="subjectCount"
+					name="subjectCount"
+					value={formik.values.subjectCount}
 					onChange={formik.handleChange}
 					aria-labelledby="input-slider-subjects"
 					defaultValue={2}
@@ -81,9 +83,9 @@ const CreateTrialForm = forwardRef((props, ref) => {
 					No. of Groups
 				</Typography>
 				<Slider
-					id="groupcount"
-					name="groupcount"
-					value={formik.values.groupcount}
+					id="groupCount"
+					name="groupCount"
+					value={formik.values.groupCount}
 					onChange={formik.handleChange}
 					aria-labelledby="input-slider-group"
 					defaultValue={2}

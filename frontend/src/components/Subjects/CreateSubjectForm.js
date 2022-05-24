@@ -3,6 +3,7 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { useFormik } from "formik";
 import { forwardRef, useImperativeHandle } from "react";
 import * as yup from "yup";
+import postData from "../../services/http-service";
 
 const CreateSubjectForm = forwardRef((props, ref) => {
 	const validationSchema = yup.object({
@@ -27,8 +28,8 @@ const CreateSubjectForm = forwardRef((props, ref) => {
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values) => {
-			console.log(values);
-		},
+			postData(`http://localhost:8080/api/v1/subject?trialId=${props.id}`, values);
+		}
 	});
 
 	return (
@@ -66,11 +67,9 @@ const CreateSubjectForm = forwardRef((props, ref) => {
 				label="Date of Birth"
 				value={formik.values.dob}
 				onChange={(val) => {
-					console.log(val);
 					formik.setFieldValue("dob", val, true);
 				}}
 				onError={(reason, val) => {
-					console.log(reason);
 					formik.setFieldError("dob", true, true);
 				}}
 				renderInput={(params) => (
