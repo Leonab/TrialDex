@@ -5,6 +5,8 @@ import com.trialdex.dex.repositories.ISubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubjectService implements ISubjectService {
 
@@ -27,5 +29,10 @@ public class SubjectService implements ISubjectService {
     @Override
     public Subject findById(Long id) {
         return subjectRepository.findSubjectById(id);
+    }
+
+    @Override
+    public List<Subject> findSubjectsByTrialId(Long trialId) {
+        return subjectRepository.findSubjectsByTrialId(trialId);
     }
 }

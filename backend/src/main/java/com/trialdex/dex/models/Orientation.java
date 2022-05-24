@@ -1,5 +1,12 @@
 package com.trialdex.dex.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum Orientation {
-    MALE, FEMALE, OTHER
+    @JsonProperty("Male")
+    MALE,
+    @JsonProperty("Female")
+    FEMALE,
+    @JsonProperty("Other")
+    OTHER
 }
