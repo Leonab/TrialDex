@@ -52,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .oauth2Login()
+                .loginPage("/login")
                 .successHandler(successHandler)
                 .clientRegistrationRepository(clientRegistrationRepository)
                 .userInfoEndpoint(userInfoEndpointConfig ->

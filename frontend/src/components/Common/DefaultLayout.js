@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { Fragment } from "react";
 import { Container } from "@mui/material";
+import { Fragment } from "react";
 import Header from "./Header";
 
 const DefaultLayout = (props) => {

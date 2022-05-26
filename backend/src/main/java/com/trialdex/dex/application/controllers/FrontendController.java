@@ -11,6 +11,11 @@ public class FrontendController {
         return "forward:/index.html";
     }
 
+    @RequestMapping(path = {"/login"})
+    public String login() {
+        return "forward:/";
+    }
+
     @RequestMapping("favicon.ico")
     String favicon() {
         return "forward:/";

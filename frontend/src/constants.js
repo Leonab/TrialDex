@@ -1,0 +1,1 @@
+export const GOOGLE_OAUTH_ENDPOINT = "/oauth2/authorization/google";
